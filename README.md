@@ -13,8 +13,8 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
 - Pre-requis: python 3.9.5
 - Quickstart:
     - Pour exécuter le programme:
-    - git clone https://github.com/MAM95190/Projet_4.git
-    - cd Projet_4
+    - git clone https://github.com/MAM95190/Project_4.git
+    - cd Project_4
     - source env/bin/activate ou .python\env\Scripts\Activate.ps1 sous windows
     - python3 -m pip install -r requirements.txt
     - python3 main.py
