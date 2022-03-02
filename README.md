@@ -1,5 +1,6 @@
 # Project_4
-Python Application to managae swiss game tournament
+Python Application to managae swiss games tournament
+The objective is to develop a python apllication that works even offline.
 
 
 ![image](https://user-images.githubusercontent.com/83790916/156448486-8c3fbeed-b203-4b43-987a-07d2c2803eb0.png)
