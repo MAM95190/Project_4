@@ -22,6 +22,10 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
 - Le fichier requirements.txt nous indique les packages nécéssaire a avoir avant l’exécution du code.
 
 
+### Capture d'écran de l'interface utilisateur
+
+
+
 ![image](https://user-images.githubusercontent.com/83790916/156448486-8c3fbeed-b203-4b43-987a-07d2c2803eb0.png)
 
 
