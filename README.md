@@ -28,7 +28,7 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
 
 
 ## Resources
-* [python inquirer] (https://magmax.org/python-inquirer/)
+* [python inquirer](https://magmax.org/python-inquirer/)
 * [Python regex to match dates](https://stackoverflow.com/questions/4709652/python-regex-to-match-dates)
 * [Python List](https://www.programiz.com/python-programming/list)
 * [Python Dictionary](https://www.programiz.com/python-programming/dictionary)
