@@ -30,6 +30,7 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
 ## Resources
 * [python inquirer] (https://magmax.org/python-inquirer/)
 * [Python regex to match dates](https://stackoverflow.com/questions/4709652/python-regex-to-match-dates)
+* [Python Dictionary](https://www.programiz.com/python-programming/dictionary)
 * [Python Tuple](https://www.programiz.com/python-programming/tuple)
 * [How to convert a string to a date in Python](https://stackoverflow.com/questions/4709652/python-regex-to-match-dates)
 * [How to create a GUID/UUID in Python](https://stackoverflow.com/questions/534839/how-to-create-a-guid-uuid-in-python)
