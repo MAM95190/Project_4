@@ -20,7 +20,7 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
     - python3 main.py
 
 
-### Capture d'écran de l'interface utilisateur
+### 3-Capture d'écran de l'interface utilisateur
 
 
 
