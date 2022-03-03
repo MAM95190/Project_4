@@ -18,8 +18,6 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
     - source env/bin/activate ou .python\env\Scripts\Activate.ps1 sous windows
     - python3 -m pip install -r requirements.txt
     - python3 main.py
-    
-- Le fichier requirements.txt nous indique les packages nécéssaire a avoir avant l’exécution du code.
 
 
 ### Capture d'écran de l'interface utilisateur
