@@ -3,8 +3,8 @@ from pprint import pprint
 from views.player.create_player_view import create_player_prompt
 from views.player.show_player_view import show_player_prompt
 from constants.player_view_constants import Answer, answers_list
-from controllers.player_controller import sorted_players_by_alphab, sorted_players_by_elo
-from models.player import Player
+from controllers.player_controller import sorted_players_by_alphab
+from controllers.player_controller import sorted_players_by_elo
 from constants.common_constants import ANSWER_KEY, SOMETHING_UNEXPECTED_STR
 
 
