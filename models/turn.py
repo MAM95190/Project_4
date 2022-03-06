@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+
 class Turn:
     """
     Class representing a turn.
@@ -15,4 +17,9 @@ class Turn:
     @staticmethod
     def fromJSON(json):
         """Create a new instance from JSON data."""
-        return Turn(id=json['id'], name=json['name'], start_time=json["start_time"], end_time=json["end_time"], matchs=json["matchs"])
+        return Turn(
+            id=json['id'],
+            name=json['name'],
+            start_time=json["start_time"],
+            end_time=json["end_time"],
+            matchs=json["matchs"])
