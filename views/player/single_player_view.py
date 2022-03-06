@@ -49,7 +49,8 @@ def main_question(player):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=f"{player.first_name} {player.last_name}: What do you want to do?",
+            message=f"""{player.first_name} {player.last_name}:
+             What do you want to do?""",
             choices=[
                 answers_list[Answer.UPDATE],
                 answers_list[Answer.DELETE],
@@ -60,3 +61,4 @@ def main_question(player):
     ])
 
     return answer
+
