@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from datetime import datetime
 
 
@@ -22,7 +23,9 @@ class Tournament:
         self.encounters = {}
 
     def __str__(self):
-        return f"""{self.id} {self.name} {self.location} 
-                {self.start_date} {self.start_date} {self.number_of_turns} 
-                {self.turns} {self.players} {self.time_control} {self.description}
+        return f"""{self.id} {self.name} {self.location}
+                {self.start_date} {self.start_date}
+                {self.number_of_turns}{self.turns}
+                {self.players} {self.time_control}
+                {self.description}
     """
