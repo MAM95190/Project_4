@@ -27,7 +27,8 @@ answers_list = {
 
 def create_player_prompt(player=None):
     """Create a new player and add them to the database"""
-    # if a player is provided, the prompt is filled with they values as default.
+    # if a player is provided, the prompt is filled with they values as
+    # default.
 
     answers = start_questions(player)
 
@@ -42,7 +43,7 @@ def create_player_prompt(player=None):
         elo=answers[answers_list[Answer.ELO]],
     )
 
-    if player == None:
+    if player is None:
         new_player = save_player(new_player)
     else:
         new_player.id = player.id
@@ -59,7 +60,7 @@ def check_birth_date(birth_date=""):
         return True
     except ValueError as err:
         pprint(
-            f"Sorry the date you provided {birth_date} (MM/DD/YY) → (Month/Day/Year) is not a valid date.")
+            f"Sorry the date you provided {birth_date} (MM/DD/YY) ")
         print(err)
         return False
 
@@ -70,36 +71,36 @@ def start_questions(player=None):
         inquirer.Text(
             answers_list[Answer.FIRST_NAME],
             message="What is your first name ?",
-            default="Rose" if player == None else player.first_name,
+            default="Rose" if player is None else player.first_name,
             show_default=True,
         ),
 
         inquirer.Text(
             answers_list[Answer.LAST_NAME],
             message="What is your last name ?",
-            default="Quartz" if player == None else player.last_name,
+            default="Quartz" if player is None else player.last_name,
             show_default=True,
         ),
 
         inquirer.Text(
             answers_list[Answer.BIRTH_DATE],
             message="What is your birth date ?",
-            default="02/01/90" if player == None else player.birth_date,
+            default="02/01/90" if player is None else player.birth_date,
             show_default=True,
         ),
 
         inquirer.Text(
             answers_list[Answer.SEX],
             message="What is your gender ?",
-            default="" if player == None else player.sex,
+            default="" if player is None else player.sex,
             show_default=True
         ),
 
         inquirer.Text(
             answers_list[Answer.ELO],
             message="What is your rank ?",
-            validate=lambda _, x: re.match("\d{1,4}", x),
-            default=600 if player == None else player.elo,
+            validate=lambda _, x: re.match("\\d{1,4}", x),
+            default=600 if player is None else player.elo,
             show_default=True,
         ),
     ])
