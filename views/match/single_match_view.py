@@ -2,9 +2,7 @@ import inquirer
 from enum import Enum
 from constants.common_constants import ANSWER_KEY
 from constants.common_constants import SOMETHING_UNEXPECTED_STR
-#from controllers.tournament_controller import get_all_tournaments_as_list
 from views.match.enter_score_player import enter_score_player_prompt
-#from controllers.turn_controller import update_turn
 
 
 class Answer(Enum):
@@ -15,7 +13,6 @@ class Answer(Enum):
 
 
 answers_list = {
-
     Answer.UPDATE: "Update",
     Answer.BACK: "Back",
 }
@@ -23,11 +20,8 @@ answers_list = {
 
 def single_match_prompt(turn, match):
     """Show match in the console."""
-    # print(main_question(turn,match))
-    # main_question(turn,match)
-
     continue_prompt = True
-    #match = turn.matchs[index_match]
+
     while (continue_prompt):
         answer = main_question(turn, match)
 
@@ -59,3 +53,4 @@ def main_question(turn, match):
     ])
 
     return answer
+
