@@ -15,7 +15,9 @@ def add_turn_to_tournament(tournament, turn):
         update_tournament(tournament)
 
         print(
-            f"Successfully add turn '{turn.name}' to tournament {tournament.name} - {tournament.location} ({tournament.start_date} - {tournament.end_date})")
+            f"Successfully add turn '{turn.name}'"
+            f" to tournament {tournament.name} - {tournament.location}"
+            f"({tournament.start_date} - {tournament.end_date})")
 
     else:
         print("Ce tour existe déjà dans le tournoi")
@@ -31,7 +33,9 @@ def add_player_to_tournament(tournament, player):
         update_tournament(tournament)
 
         print(
-            f"Successfully add player '{player.name}' to tournament {tournament.name} - {tournament.location} ({tournament.start_date} - {tournament.end_date})")
+            f"Successfully add player '{player.name}'"
+            f"to tournament {tournament.name} - {tournament.location}"
+            f" ({tournament.start_date} - {tournament.end_date})")
 
     else:
         print("Ce joueur existe déjà dans le tournoi")
@@ -114,12 +118,12 @@ def create_tournament(tournament):
 
 
 def get_all_tournaments():
-    """Return all tournaments from the database as a list of complexe data (Dictionnary of Dictionnary)"""
+    """Return all tournaments as a complexe data """
     return db.all()
 
 
 def get_all_tournaments_as_list():
-    """Return all tournaments from database as a list of string containing tournament's name and location."""
+    """Return all tournaments as a list of string ."""
     tournaments = get_all_tournaments()
 
     # Apply format_tournament() function to each tournament from database
@@ -142,6 +146,7 @@ def format_tournament(tournament):
     """Format tournament output with name and elo."""
 
     tournament_id = f"{tournament['id']}"  # to retrieve tournament data
-    tournament_name = f"{tournament['name']} {tournament['location']} ({tournament['start_date']})"
+    tournament_name = f"{tournament['name']}"
+    f" {tournament['location']} ({tournament['start_date']})"
 
     return (tournament_name, tournament_id)
