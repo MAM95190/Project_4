@@ -22,12 +22,19 @@ class Player:
         self._name = value
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} {self.birth_date} {self.sex} {self.elo}"
+        return f"({self.first_name} {self.last_name}"
+        f"{self.birth_date} {self.sex} {self.elo})"
 
     @staticmethod
     def fromJSON(json):
         """Create a new instance from JSON data."""
         try:
-            return Player(id=json['id'], first_name=json['first_name'], last_name=json["last_name"], birth_date=json["birth_date"], sex=json["sex"], elo=json["elo"])
+            return Player(
+                id=json['id'],
+                first_name=json['first_name'],
+                last_name=json["last_name"],
+                birth_date=json["birth_date"],
+                sex=json["sex"],
+                elo=json["elo"])
         except TypeError:
             print('NoneType')
