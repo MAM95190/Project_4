@@ -3,7 +3,7 @@ from tinydb.table import Document
 import uuid
 from constants.player_view_constants import Answer, answers_list
 from models.player import Player
-import operator
+
 
 db = TinyDB('data/players.json')
 
@@ -76,12 +76,14 @@ def update_player(player):
 
 
 def get_all_players():
-    """Return all players from the database as a list of complexe data (Dictionnary of Dictionnary)"""
+    """Return all players from the database as a list
+    of complexe data (Dictionnary of Dictionnary)"""
     return db.all()
 
 
 def get_all_players_as_list(include_back=True):
-    """Return all players from database as a list of string containing player's name and elo rating."""
+    """Return all players from database as a list
+    of string containing player's name and elo rating."""
     players = get_all_players()
 
     # Apply format_player() function to each player from database
@@ -106,7 +108,8 @@ def format_player(player):
     """Format player output with name and elo."""
 
     player_id = f"{player['id']}"  # to retrieve player data
-    player_name = f"{player['first_name']} {player['last_name']} ({player['elo']})"
+    player_name = f"{player['first_name']}"
+    f"{player['last_name']} ({player['elo']})"
     return (player_name, player_id,)
 
 
@@ -124,6 +127,3 @@ def sorted_players_by_elo():
     for player in sorted_list:
         print(
             f"{player['first_name']} {player['last_name']} ({player['elo']})")
-
-
-
