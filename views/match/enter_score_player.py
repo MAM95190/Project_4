@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import inquirer
 from enum import Enum
 from controllers.turn_controller import update_turn
@@ -30,8 +32,6 @@ def enter_score_player_prompt(turn, selected_match_index, player_1, player_2):
     # • Joueur 2: <nom du joueur>
     # • Match nul
     # • Back (retour)
-    # -
-
     match = turn.matchs[selected_match_index]
 
     while (continue_prompt):
@@ -68,7 +68,7 @@ def main_question(match, selected_match_index, player_1, player_2):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=f"Who won the match ?",
+            message="Who won the match ?:",
             choices=[
                 (f"Player 1: {player_1}", player_1.id),
                 (f"Player 2: {player_2}", player_2.id),
