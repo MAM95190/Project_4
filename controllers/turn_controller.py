@@ -4,8 +4,8 @@ import uuid
 from constants.turn_view_constants import Answer, answers_list
 from models.turn import Turn
 from controllers.tournament_controller import update_tournament
-
-from controllers.player_controller import get_player_from_id, get_all_players_as_list
+from controllers.player_controller import get_player_from_id
+from controllers.player_controller import get_all_players_as_list
 
 db = TinyDB('data/turns.json')
 
@@ -62,7 +62,10 @@ def create_match(turn, tournament):
         tournament.encounters[f"{second_player.id}"] = f"{first_player.id}"
 
         print(
-            f"player 1: {tuple_match[0][0]}, score 1: {tuple_match[0][1]}, player 2: {tuple_match[1][0]}, score 2: {tuple_match[1][1]}"
+            f"player 1: {tuple_match[0][0]}",
+            f"score 1: {tuple_match[0][1]}",
+            f"player 2: {tuple_match[1][0]}",
+            f" score 2: {tuple_match[1][1]}"
         )
 
         if tuple_match not in turn.matchs:
@@ -78,7 +81,6 @@ def create_next_match(turn, tournament):
 
     previous_turn_id = tournament.turns[-2]
     previous_turn = get_turn_from_id(previous_turn_id)
-    #matchs = previous_turn.matchs
     print(f"matchs: {previous_turn.matchs}")
     print("------")
 
@@ -103,8 +105,6 @@ def create_next_match(turn, tournament):
     players_elo = []
 
     for player_id in players_ids:
-        #print(f"player_id: {player_id}")
-        # print("------")
         player = get_player_from_id(player_id)
         players_elo.append(player.elo)
 
@@ -144,14 +144,11 @@ def create_next_match(turn, tournament):
 
     while i < limit:
         i = i + 1
-        #print(f"i: {i} | limit: {limit}")
         first_player_id = (players_1[i][0])
 
         # ------
         # test si 2 joueurs se sont déjà rencontrés
-        # ------
         second_player_id = find_second_player(tournament, players_2)
-        #second_player_id = (players_2[i][0])
         print("----")
         print(f"players_2 length: {len(players_2)}")
         print("----")
@@ -180,7 +177,7 @@ def find_second_player(tournament, players_2):
     index = 0
     found_player_2 = None
 
-    while (found_player_2 == None or (index < len(players_2))):
+    while (found_player_2 is None or (index < len(players_2))):
         index += 1
 
         if (index >= len(players_2) - 1):
@@ -193,8 +190,6 @@ def find_second_player(tournament, players_2):
 
         # PROBLEME: `encounter_player_2_id` ne devrait pas être vide.
         encounter_player_2_id = tournament.encounters.get(proposed_player_2)
-        # print('____2')
-        #print(f"encounter_player_2_id: {encounter_player_2_id}")
 
         if (proposed_player_2 != encounter_player_2_id):
             found_player_2 = players_2.pop(index)[0]
@@ -207,13 +202,7 @@ def find_second_player(tournament, players_2):
             print(f'took p2 by the end: {proposed_player_2}')
             print('----')
             break
-        # if (index == (lenght_sorted_list / 2) - 1):
-        #   print("p2 not found mais il n'y a plus d'autres joueurs")
-        #   second_player = players_2.pop(0)
-        #   found = True
-    # -------
-    # -------
-    if found_player_2 == None:
+    if found_player_2 is None:
         found_player_2 = players_2.pop(0)[0]
         print(f"catch None | returning found_player_2: {found_player_2}")
 
@@ -245,7 +234,8 @@ def save_turn(turn):
     # Generate an unique identifier for a player.
     id = uuid.uuid4().int
     print(
-        f"'id': {id}, name: {turn.name} start time: {turn.start_time}, end time: {turn.end_time}"
+        f"'id': {id}, name: {turn.name}"
+        f"start time: {turn.start_time}, end time: {turn.end_time}"
     )
     print(turn.matchs)
 
@@ -286,12 +276,13 @@ def update_turn(turn):
 
 
 def get_all_turns():
-    """Return all turns from the database as a list of complexe data (Dictionnary of Dictionnary)"""
+    """Return all turns from the database as a list
+       of complexe data (Dictionnary of Dictionnary)"""
     return db.all()
 
 
 def get_all_turns_as_list(include_back=True):
-    """Return all turns from database as a list of string containing player's name and elo rating."""
+    """Return all turns as a list of string ."""
     turns = get_all_turns()
 
     # Apply format_player() function to each player from database
@@ -309,8 +300,6 @@ def get_turn_from_id(turn_id):
     """Return a turn dictionnary from an id."""
 
     turn_data = db.get(doc_id=int(turn_id))
-    # print("::::::::::::::::::::::")
-    # print(turn_data)
 
     return Turn.fromJSON(turn_data)
 
@@ -350,11 +339,9 @@ def sorte_players_by_score(tournament):
             player_score_dictionnary[player_2_id] = float(
                 player_2_last_score) + float(player_2_score)
 
-    #sorted_tuple_player_score_list = dict(sorted(player_score_dictionnary.items(), key=lambda item: item[1],reverse = True))
     sorted_tuple_player_score_list = sorted(player_score_dictionnary.items(),
                                             key=lambda item: item[1],
                                             reverse=True)
-    player_score_list = []
 
     for sorted_tuple_player_score in sorted_tuple_player_score_list:
         player = get_player_from_id(sorted_tuple_player_score[0])
