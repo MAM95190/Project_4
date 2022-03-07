@@ -24,11 +24,6 @@ def create_turn(turn, tournament):
                 'matchs': turn.matchs,
             },
             doc_id=id))
-
-    print("-------------")
-    print(f"Created turn: {turn.name}")
-    print("-------------")
-
     turn.id = id
 
 
@@ -61,13 +56,6 @@ def create_match(turn, tournament):
         tournament.encounters[f"{first_player.id}"] = f"{second_player.id}"
         tournament.encounters[f"{second_player.id}"] = f"{first_player.id}"
 
-        print(
-            f"player 1: {tuple_match[0][0]}",
-            f"score 1: {tuple_match[0][1]}",
-            f"player 2: {tuple_match[1][0]}",
-            f" score 2: {tuple_match[1][1]}"
-        )
-
         if tuple_match not in turn.matchs:
             turn.matchs.append(tuple_match)
             update_turn(turn)
@@ -81,9 +69,6 @@ def create_next_match(turn, tournament):
 
     previous_turn_id = tournament.turns[-2]
     previous_turn = get_turn_from_id(previous_turn_id)
-    print(f"matchs: {previous_turn.matchs}")
-    print("------")
-
     player_1_ids = []
     player_2_ids = []
     score_players_1 = []
@@ -137,11 +122,6 @@ def create_next_match(turn, tournament):
 
     i = -1
     limit = int((lenght_sorted_list / 2) - 1)
-
-    print("---")
-    print(f"players_2:: {players_2}")
-    print("---")
-
     while i < limit:
         i = i + 1
         first_player_id = (players_1[i][0])
@@ -149,21 +129,11 @@ def create_next_match(turn, tournament):
         # ------
         # test si 2 joueurs se sont déjà rencontrés
         second_player_id = find_second_player(tournament, players_2)
-        print("----")
-        print(f"players_2 length: {len(players_2)}")
-        print("----")
-
         new_tuple_match = ([first_player_id, 0], [second_player_id, 0])
-        print(f"new_tuple_match: {new_tuple_match}")
-
-        print(f"first_player_id: {first_player_id}")
-        print(f"second_player_id: {second_player_id}")
         tournament.encounters[f"{first_player_id}"] = f"{second_player_id}"
         tournament.encounters[f"{second_player_id}"] = f"{first_player_id}"
-
         turn.matchs.append(new_tuple_match)
     update_turn(turn)
-
     update_tournament(tournament)
 
 
@@ -182,7 +152,6 @@ def find_second_player(tournament, players_2):
 
         if (index >= len(players_2) - 1):
             found_player_2 = players_2.pop(0)[0]
-            print(f"took a default p2:  {found_player_2}")
             break
 
         current_player_2_list = players_2[index]
@@ -193,19 +162,13 @@ def find_second_player(tournament, players_2):
 
         if (proposed_player_2 != encounter_player_2_id):
             found_player_2 = players_2.pop(index)[0]
-            print(f'p2 found: {found_player_2}')
-            print('----')
             break
 
         if (index >= len(players_2) - 1):
             proposed_player_2 = players_2.pop(index)[0]
-            print(f'took p2 by the end: {proposed_player_2}')
-            print('----')
             break
     if found_player_2 is None:
         found_player_2 = players_2.pop(0)[0]
-        print(f"catch None | returning found_player_2: {found_player_2}")
-
     return found_player_2
 
 
@@ -233,12 +196,6 @@ def save_turn(turn):
 
     # Generate an unique identifier for a player.
     id = uuid.uuid4().int
-    print(
-        f"'id': {id}, name: {turn.name}"
-        f"start time: {turn.start_time}, end time: {turn.end_time}"
-    )
-    print(turn.matchs)
-
     db.insert(
         Document(
             {
@@ -249,11 +206,6 @@ def save_turn(turn):
                 'matchs': turn.matchs,
             },
             doc_id=id))
-
-    print("-------------")
-    print(f"Saved turn : {turn.name}")
-    print("-------------")
-
     turn.id = id
     return turn
 
@@ -269,11 +221,6 @@ def update_turn(turn):
             'matchs': turn.matchs,
         },
         doc_ids=[turn.id])
-
-    print("-------------")
-    print(f"updated turn: {turn.name}")
-    print("-------------")
-
 
 def get_all_turns():
     """Return all turns from the database as a list
@@ -347,8 +294,6 @@ def sorte_players_by_score(tournament):
         player = get_player_from_id(sorted_tuple_player_score[0])
         score = sorted_tuple_player_score[1]
 
-        print(f"{player.name}", f" total score:{score}")
-
 
 def sorte_players_by_alphabet(tournament):
     player_ids = tournament.players
@@ -359,5 +304,3 @@ def sorte_players_by_alphabet(tournament):
         players.append(player)
         gamers = get_all_players_as_list(players)
     players_sorted = sorted(gamers, key=lambda x: x[0])
-    for player in players_sorted:
-        print(f"{player[0]}")
