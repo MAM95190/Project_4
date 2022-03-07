@@ -60,7 +60,8 @@ def get_players_names_from_ids(player_ids=[]):
     for player_id in player_ids:
         player = get_player_from_id(player_id)
         players_list.append(
-            (f"{player.name} {player.elo} ({player.sex}) {player.birth_date}", f"{player.id}"))
+            (f"{player.name} {player.elo} ({player.sex}) {player.birth_date}",
+             f"{player.id}"))
 
     return players_list
 
@@ -68,9 +69,9 @@ def get_players_names_from_ids(player_ids=[]):
 def show_single_player(player):
     """Format & display a single player to the console."""
 
-    print("------")
     print(
-        f"• First name: {player.first_name}\n• Last name: {player.last_name}\n• Elo: {player.elo}\n• Sex: {player.sex}\n• Birth date: {player.birth_date}"
+        f"""• First name: {player.first_name}
+        \n• Last name: {player.last_name}
+        \n• Elo: {player.elo}\n• Sex: {player.sex}
+        \n• Birth date: {player.birth_date}"""
     )
-    print("------")
-    print("")
