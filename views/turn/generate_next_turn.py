@@ -60,7 +60,6 @@ def generate_next_turn_prompt(tournament):
 
         return new_turn
 
-
 def start_questions():
     """Start a serie of question to create a new turn."""
     answers = inquirer.prompt([
