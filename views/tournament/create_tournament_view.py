@@ -1,7 +1,8 @@
 import inquirer
 from enum import Enum
 from models.tournament import Tournament
-from controllers.tournament_controller import create_tournament, update_tournament
+from controllers.tournament_controller import create_tournament
+from controllers.tournament_controller import update_tournament
 import re
 
 
@@ -32,10 +33,6 @@ answers_list = {
 def create_tournament_prompt(tournament=None):
     """Create a new player and add them to the database"""
     answers = start_questions()
-
-    #date_string = answers[answers_list[Answer.BIRTH_DATE]]
-    # check_birth_date(date_string)
-
     new_tournament = Tournament(
         name=answers[answers_list[Answer.NAME]],
         location=answers[answers_list[Answer.LOCATION]],
@@ -44,14 +41,13 @@ def create_tournament_prompt(tournament=None):
         number_of_turns=answers[answers_list[Answer.TURNS]],
         turns=[],
         players=[],
-        #players = answers[answers_list[Answer.PLAYERS]],
         time_control=answers[answers_list[Answer.TIME_CONTROL]],
         description=answers[answers_list[Answer.DESCRIPTION]],
     )
 
     # create_tournament(new_tournament)
 
-    if tournament == None:
+    if tournament is None:
         new_tournament = create_tournament(new_tournament)
     else:
         new_tournament.id = tournament.id
@@ -94,7 +90,7 @@ def start_questions():
         inquirer.Text(
             answers_list[Answer.TURNS],
             message="How many turns will it have?",
-            validate=lambda _, x: re.match("\d{1,2}", x),
+            validate=lambda _, x: re.match("\\d{1,2}", x),
             default=4,
             show_default=True,
         ),
