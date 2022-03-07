@@ -2,7 +2,8 @@ import inquirer
 from enum import Enum
 from constants.common_constants import ANSWER_KEY
 from constants.common_constants import SOMETHING_UNEXPECTED_STR
-from controllers.player_controller import get_all_players_as_list, get_player_from_id
+from controllers.player_controller import get_all_players_as_list
+from controllers.player_controller import get_player_from_id
 from views.player.create_player_view import create_player_prompt
 from controllers.tournament_controller import add_player_to_tournament
 
@@ -35,22 +36,14 @@ def add_player_tournament_prompt(tournament):
         elif (answer[ANSWER_KEY] == answers_list[Answer.ADD_EXISTING]):
             list_players_id = show_existing_players(tournament)
             print(list_players_id)
-            print("*********:::**:::::::*********")
 
             for player_id in list_players_id:
                 player = get_player_from_id(player_id)
-                print("1")
-                print("§§§§§§§§§§§§§§§§§§§§§§§§§§")
                 print(player)
-                # print(player_data)
-                #player = deserialize_player(player_data)
+
                 show_single_player(player)
                 print(player)
                 add_player_to_tournament(tournament, player)
-
-                # print("*********************")
-                #add_player_to_tournament(tournament, player)
-                # print("*********************")
 
         elif (answer[ANSWER_KEY] == answers_list[Answer.CREATE_NEW]):
             # 1.récupérer le joueur de vient de créer
@@ -69,7 +62,8 @@ def main_question(tournament):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=f"{tournament.name} {tournament.location} ({tournament.start_date}): What do you want to do?",
+            message=f"""{tournament.name} {tournament.location}
+            ({tournament.start_date}): What do you want to do?""",
             choices=[
                 answers_list[Answer.ADD_EXISTING],
                 answers_list[Answer.CREATE_NEW],
@@ -102,9 +96,10 @@ def show_existing_players(tournament):
 def show_single_player(player):
     """Format & display a single player to the console."""
 
-    print("------")
     print(
-        f"• First name: {player.first_name}\n• Last name: {player.last_name}\n• Elo: {player.elo}\n• Sex: {player.sex}\n• Birth date: {player.birth_date}"
+        f"""• First name: {player.first_name}
+        \n• Last name: {player.last_name}
+        \n• Elo: {player.elo}
+        \n• Sex: {player.sex}
+        \n• Birth date: {player.birth_date}"""
     )
-    print("------")
-    print("")
