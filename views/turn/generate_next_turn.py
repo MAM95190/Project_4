@@ -24,7 +24,7 @@ answers_list = {
 
 def generate_next_turn_prompt(tournament):
     """Generate the next turn"""
-    continue_prompt = True
+ 
     question = [
         inquirer.List(
             "type",
@@ -35,7 +35,7 @@ def generate_next_turn_prompt(tournament):
 
     answers = inquirer.prompt(question)
     if (answers['type']) == "No":
-        continue_prompt = False
+        pass
     elif (answers['type']) == "Yes":
         answers = start_questions()
 
