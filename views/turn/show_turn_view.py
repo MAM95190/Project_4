@@ -38,17 +38,14 @@ def show_turn_prompt():
             continue_prompt = False
         else:
             turn = get_turn_from_id(answers[ANSWER_KEY])
-            #player = deserialize_player(player_data)
             show_single_turn(turn)
             single_turn_prompt(turn)
 
 
 def show_single_turn(turn):
     """Format & display a single turn to the console."""
-
-    print("------")
     print(
-        f"• First name: {turn.name}\n• \n• Start time: {turn.start_time}\n• End time: {turn.end_time}"
+        f"""• First name: {turn.name}
+        \n• Start time: {turn.start_time}
+        \n• End time: {turn.end_time}"""
     )
-    print("------")
-    print("")
