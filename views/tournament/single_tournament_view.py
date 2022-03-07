@@ -7,7 +7,8 @@ from views.tournament.add_player import add_player_tournament_prompt
 from views.tournament.show_players_tournament import show_players_tournament_prompt
 from views.tournament.show_turns_tournament import show_turns_tournament_prompt
 from views.turn.generate_next_turn import generate_next_turn_prompt
-from controllers.turn_controller import sorte_players_by_score, sorte_players_by_alphabet
+from controllers.turn_controller import sorte_players_by_score
+from controllers.turn_controller import sorte_players_by_alphabet
 
 
 class Answer(Enum):
@@ -76,13 +77,15 @@ def main_question(tournament):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=f"{tournament.name} {tournament.location} ({tournament.start_date}): What do you want to do?",
+            message=f"""{tournament.name} {tournament.location}
+            ({tournament.start_date}): What do you want to do?""",
             choices=[
                 answers_list[Answer.ADD_PLAYER],
                 answers_list[Answer.GENERATE_NEXT_TURN],
                 answers_list[Answer.SHOW_TURNS],
                 answers_list[Answer.SHOW_PLAYERS],
-                answers_list[Answer.REPORT_BY_SCORE], answers_list[Answer.REPORT_BY_ALPHAB],
+                answers_list[Answer.REPORT_BY_SCORE],
+                answers_list[Answer.REPORT_BY_ALPHAB],
                 answers_list[Answer.DELETE],
                 answers_list[Answer.BACK],
             ],
