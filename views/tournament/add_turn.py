@@ -1,16 +1,13 @@
 import inquirer
 from enum import Enum
 from constants.common_constants import ANSWER_KEY
-from controllers.turn_controller import get_all_turns_as_list, create_next_match
-
-#from views.turn.generate_next_turn import generate_next_turn_prompt
+from controllers.turn_controller import get_all_turns_as_list
 from controllers.tournament_controller import add_turn_to_tournament
 
 
 class Answer(Enum):
     """Possible answers for this prompt"""
     BACK = 0
-    #CREATE_NEXT = 1
 
 
 answers_list = {
@@ -31,10 +28,7 @@ def add_turn_tournament_prompt(turn, tournament):
             continue_prompt = False
 
         else:
-            #(answer[ANSWER_KEY] == answers_list[Answer.CREATE_NEXT])
-            #turn = generate_next_turn_prompt()
             add_turn_to_tournament(tournament, turn)
-            # create_next_match(turn,tournament)
 
 
 def main_question(tournament):
@@ -45,7 +39,6 @@ def main_question(tournament):
             ANSWER_KEY,
             message=": What do you want to do?",
             choices=[
-                # answers_list[Answer.CREATE_NEXT],
                 answers_list[Answer.BACK],
             ],
             carousel=True,
@@ -74,10 +67,7 @@ def show_existing_turns(tournament):
 
 def show_single_turn(turn):
     """Format & display a single turn to the console."""
-
-    print("------")
     print(
-        f"• Name: {turn.name}\n• Start_date: {turn.start_date}\n• End_date: {turn.end_date}"
+        f"""• Name: {turn.name}\n• Start_date: {turn.start_date}
+        \n• End_date: {turn.end_date}"""
     )
-    print("------")
-    print("")
