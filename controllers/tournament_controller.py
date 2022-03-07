@@ -14,34 +14,12 @@ def add_turn_to_tournament(tournament, turn):
         tournament.turns.append(turn.id)
         update_tournament(tournament)
 
-        print(
-            f"Successfully add turn '{turn.name}'"
-            f" to tournament {tournament.name} - {tournament.location}"
-            f"({tournament.start_date} - {tournament.end_date})")
-
-    else:
-        print("Ce tour existe déjà dans le tournoi")
-
-    print('_________')
-
-
 def add_player_to_tournament(tournament, player):
     """Add a new player to the target tournament."""
 
     if player.id not in tournament.players:
         tournament.players.append(player.id)
         update_tournament(tournament)
-
-        print(
-            f"Successfully add player '{player.name}'"
-            f"to tournament {tournament.name} - {tournament.location}"
-            f" ({tournament.start_date} - {tournament.end_date})")
-
-    else:
-        print("Ce joueur existe déjà dans le tournoi")
-
-    print('_________')
-
 
 def update_tournament(tournament):
     """Save an existing tournament in database."""
@@ -109,13 +87,6 @@ def create_tournament(tournament):
         },
             doc_id=id)
     )
-
-    print("")
-    print("-------------")
-    print(f"saved tournament: {tournament.name} ({tournament.location})")
-    print("-------------")
-    print("")
-
 
 def get_all_tournaments():
     """Return all tournaments as a complexe data """
