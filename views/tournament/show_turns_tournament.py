@@ -60,7 +60,6 @@ def get_turns_names_from_ids(turn_ids=[]):
     for turn_id in turn_ids:
         turn = get_turn_from_id(turn_id)
         turns_list.append((f"{turn.name}", f"{turn.id}"))
-    print("######################")
     print(turns_list)
     return turns_list
 
@@ -68,9 +67,8 @@ def get_turns_names_from_ids(turn_ids=[]):
 def show_single_turn(turn):
     """Format & display a single turn to the console."""
 
-    print("------")
     print(
-        f"• Name: {turn.name}\n• Start time: {turn.start_time}\n• End time: {turn.end_time}"
+        f"""• Name: {turn.name}
+        \n• Start time: {turn.start_time}
+        \n• End time: {turn.end_time}"""
     )
-    print("------")
-    print("")
