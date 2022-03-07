@@ -49,7 +49,8 @@ def main_question(turn):
     answer = inquirer.prompt([
         inquirer.List(
             ANSWER_KEY,
-            message=f"{turn.name} ({turn.start_time}): What do you want to do?",
+            message=(f"{turn.name}",
+                     f"({turn.start_time}): What do you want to do?"),
             choices=[
                 answers_list[Answer.SHOW_MATCHS],
                 answers_list
