@@ -58,7 +58,7 @@ def generate_next_turn_prompt(tournament):
             print("creation des tours supplémentaire (>1)")
             create_next_match(new_turn, tournament)
 
-    return new_turn
+        return new_turn
 
 
 def start_questions():
