@@ -1,6 +1,8 @@
 import inquirer
 from enum import Enum
-from controllers.tournament_controller import get_all_tournaments_as_list, get_tournament_from_id, deserialize_tournament
+from controllers.tournament_controller import get_all_tournaments_as_list
+from controllers.tournament_controller import get_tournament_from_id
+from controllers.tournament_controller import deserialize_tournament
 from constants.common_constants import ANSWER_KEY
 from views.tournament.single_tournament_view import single_tournament_prompt
 
@@ -45,12 +47,14 @@ def show_tournament_prompt():
 def show_single_tournament(tournament):
     """Format & display a single tournament to the console."""
 
-    print("------")
     print(
-        f"• Name: {tournament.name}\n• Location: {tournament.location}\n• Start date: {tournament.start_date}\n• End date: {tournament.end_date}\n• Number of turns: {tournament.number_of_turns}\n• Number of players: {len(tournament.players)}\n• Current turn: {len(tournament.turns)}"
+        f"""• Name: {tournament.name}\n• Location: {tournament.location}
+        \n• Start date: {tournament.start_date}
+        \n• End date: {tournament.end_date}
+        \n• Number of turns: {tournament.number_of_turns}
+        \n• Number of players: {len(tournament.players)}
+        \n• Current turn: {len(tournament.turns)}"""
     )
-    print("------")
-    print("")
 
 
 def not_player(tournament):
