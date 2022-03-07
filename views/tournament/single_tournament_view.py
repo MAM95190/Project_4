@@ -4,7 +4,7 @@ from controllers.tournament_controller import delete_tournament
 from constants.common_constants import ANSWER_KEY
 from constants.common_constants import SOMETHING_UNEXPECTED_STR
 from views.tournament.add_player import add_player_tournament_prompt
-from views.tournament.show_players_tournament import show_players_tournament_prompt
+from ..tournament.show_players_tournament import show_players_tournament_prompt
 from views.tournament.show_turns_tournament import show_turns_tournament_prompt
 from views.turn.generate_next_turn import generate_next_turn_prompt
 from controllers.turn_controller import sorte_players_by_score
