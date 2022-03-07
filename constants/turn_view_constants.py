@@ -17,4 +17,3 @@ answers_list = {
     Answer.DELETE: "Delete a turn",
     Answer.VIEW: "View turns"
 }
-
