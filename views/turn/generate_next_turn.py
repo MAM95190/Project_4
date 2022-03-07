@@ -1,7 +1,8 @@
 import inquirer
 from enum import Enum
 from models.turn import Turn
-from controllers.turn_controller import save_turn, create_match, create_next_match
+from controllers.turn_controller import save_turn, create_match
+from controllers.turn_controller import create_next_match
 from views.tournament.add_turn import add_turn_to_tournament
 
 
@@ -36,7 +37,6 @@ def generate_next_turn_prompt(tournament):
     if (answers['type']) == "No":
         continue_prompt = False
     elif (answers['type']) == "Yes":
-        continue_prompt = True
         answers = start_questions()
 
         new_turn = Turn(id=id,
@@ -56,7 +56,7 @@ def generate_next_turn_prompt(tournament):
             new_turn = save_turn(new_turn)
             add_turn_to_tournament(tournament, new_turn)
             print("creation des tours supplémentaire (>1)")
-            create_next_match(new_turn,  tournament)
+            create_next_match(new_turn, tournament)
 
     return new_turn
 
