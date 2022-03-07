@@ -45,12 +45,6 @@ def save_player(player):
             doc_id=id)
     )
 
-    print("")
-    print("-------------")
-    print(f"saved player: {player.name} ({player.elo})")
-    print("-------------")
-    print("")
-
     player.id = id
     return player
 
@@ -67,13 +61,6 @@ def update_player(player):
         'elo': int(player.elo),
     },
         doc_ids=[player.id])
-
-    print("")
-    print("-------------")
-    print(f"updated player: {player.name} ({player.elo})")
-    print("-------------")
-    print("")
-
 
 def get_all_players():
     """Return all players from the database as a list
@@ -122,8 +109,5 @@ def sorted_players_by_alphab():
 
 def sorted_players_by_elo():
     players = get_all_players()
-
     sorted_list = sorted(players, key=lambda x: x['elo'], reverse=True)
-    for player in sorted_list:
-        print(
-            f"{player['first_name']} {player['last_name']} ({player['elo']})")
+   
