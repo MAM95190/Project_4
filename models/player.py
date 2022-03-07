@@ -37,4 +37,4 @@ class Player:
                 sex=json["sex"],
                 elo=json["elo"])
         except TypeError:
-            print('NoneType')
+            pass
