@@ -18,7 +18,9 @@ Objectif : developper une application qui fonctionnerait meme hors ligne.
     - source env/bin/activate ou .python\env\Scripts\Activate.ps1 sous windows
     - python3 -m pip install -r requirements.txt
     - python3 main.py
-
+### 3-Génerer un rapport flake8 :
+- installer flake8  avec la commande : $pip install flake8-html  
+- Génerer le rapport avec la commande : $flake8 --format=html --htmldir=flake-report  
 
 ### 3-Capture d'écran de l'interface utilisateur
 
